@@ -33,11 +33,11 @@ express()
   .post('/db', async (req, res) => {
     try {
    	  const email = req.param("email");
-   	  const pass = req.param("pass");
+   	  let pass = req.param("pass");
    	  const query = "SELECT * FROM login where email =" + "'" + email + "'" + " AND pass="+ pass;
    	  console.log("holi:"+query);
       const client = await pool.connect()
-      const result = await client.query(query);
+      const result = await client.query("SELECT * FROM login where email =" + "'" + email + "'" + " AND pass="+ pass);
       const results = { 'results': (result) ? result.rows : null};
       res.render('pages/db', results );
       client.release();
