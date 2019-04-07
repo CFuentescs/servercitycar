@@ -28,10 +28,10 @@ express()
     }
   })*/
   .post('/db', async (req, res) => {
+  	var email = req.param('email');
+    var pass = req.param('pass');
     try {
       const client = await pool.connect()
-      var email = req.param('email');
-      var pass = req.param('pass');
       const result = await client.query(`SELECT * FROM login where ${ email} LIKE email AND ${pass} LIKE pass`);
 
       const results = { 'results': (result) ? result.rows : null};
@@ -39,7 +39,7 @@ express()
       client.release();
     } catch (err) {
       console.error(err);
-      res.send("Error " + err);
+      res.send("Error " + err + email);
     }
   })
 
