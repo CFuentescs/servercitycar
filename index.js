@@ -33,4 +33,19 @@ express()
       res.send("Error " + err);
     }
   }) 
+  .get('/db', async (req, res) => {
+    try {
+   	  const email = req.param("email");
+   	  let pass = req.param("pass");
+   	  const query = `SELECT * FROM login where '${email}' = email and '${pass}' = pass`;
+      const client = await pool.connect()
+      const result = await client.query(query);
+      const results = { 'results': (result) ? result.rows : null};
+      res.render('pages/db', results );
+      client.release();
+    } catch (err) {
+      console.error(err);
+      res.send("Error " + err);
+    }
+  }) 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
