@@ -36,7 +36,7 @@ express()
    	  let pass = req.body.pass;
    	  console.log('holi'+email);
       const client = await pool.connect()
-      const result = await client.query(`SELECT * FROM login where ${email} = email AND ${pass} = pass`);
+      const result = await client.query(`SELECT * FROM login`);
       const results = { 'results': (result) ? result.rows : null};
       res.render('pages/db', results );
       client.release();
