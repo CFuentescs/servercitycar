@@ -32,8 +32,8 @@ express()
   }) */ 
   .post('/db', async (req, res) => {
     try {
-   	  const email = req.body.email;
-   	  const pass = req.body.pass;
+   	  const email = req.param("email");
+   	  const pass = req.param("pass");
    	  const query = "SELECT * FROM login where email =" + "'" + email + "'" + " AND pass="+ pass;
    	  console.log("holi:"+query);
       const client = await pool.connect()
