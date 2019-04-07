@@ -34,7 +34,7 @@ express()
     try {
    	  const email = req.param("email");
    	  let pass = req.param("pass");
-   	  const query = "SELECT * FROM login where email =" + "'" + email + "'" + " AND pass = "+ pass +";";
+   	  const query = `SELECT * FROM login where '${email}' = email and '${pass}' = pass`;
    	  console.log("holi:"+query);
       const client = await pool.connect()
       const result = await client.query(query);
