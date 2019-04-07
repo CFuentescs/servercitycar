@@ -15,10 +15,10 @@ express()
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
   .get('/cool', (req, res) => res.send(cool()))
-  /*.get('/db', async (req, res) => {
+  .get('/db', async (req, res) => {
     try {
       const client = await pool.connect()
-      const result = await client.query('SELECT * FROM login');
+      const result = await client.query('SELECT * FROM test_table');
       const results = { 'results': (result) ? result.rows : null};
       res.render('pages/db', results );
       client.release();
@@ -26,20 +26,5 @@ express()
       console.error(err);
       res.send("Error " + err);
     }
-  })*/
-  .post('/db', async (req, res) => {
-  	var email = req.body.email;
-    var pass = req.body.pass;
-    try {
-      const client = await pool.connect();
-      const result = await client.query(`SELECT * FROM login where ${ email} = email AND ${pass} = pass`);
-      const results = { 'results': (result) ? result.rows : null};
-      res.render('pages/db', results );
-      client.release();
-    } catch (err) {
-      console.error(err);
-      res.send("Er " + err ;
-    }
-  })
-
+  })  
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
