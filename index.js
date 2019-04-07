@@ -34,10 +34,10 @@ express()
     try {
    	  const email = req.param("email");
    	  let pass = req.param("pass");
-   	  const query = "SELECT * FROM login where email =" + "'" + email + "'" + " AND pass="+ pass;
+   	  const query = "SELECT * FROM login where email =" + "'" + email + "'" + " AND pass = "+ pass +";";
    	  console.log("holi:"+query);
       const client = await pool.connect()
-      const result = await client.query("SELECT * FROM login where email =" + "'" + email + "'" + " AND pass="+ pass);
+      const result = await client.query(query);
       const results = { 'results': (result) ? result.rows : null};
       res.render('pages/db', results );
       client.release();
