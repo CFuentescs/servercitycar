@@ -39,7 +39,7 @@ express()
       client.release();
     } catch (err) {
       console.error(err);
-      res.send("Error " + err + email);
+      res.send("Er " + err + email);
     }
   })
 
