@@ -1,6 +1,7 @@
 const express = require('express')
 const cool = require('cool-ascii-faces')
 const path = require('path')
+var bodyParser = require('body-parser')
 const PORT = process.env.PORT || 5000
 
 const { Pool } = require('pg');
