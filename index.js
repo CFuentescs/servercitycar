@@ -33,13 +33,13 @@ express()
     try {
       const client = await pool.connect()
       const result = await client.query(`SELECT * FROM login where ${ email} LIKE email AND ${pass} LIKE pass`);
-
+      console.log(email);
       const results = { 'results': (result) ? result.rows : null};
       res.render('pages/db', results );
       client.release();
     } catch (err) {
       console.error(err);
-      res.send("Er " + err + email);
+      res.send("Er " + err ;
     }
   })
 
