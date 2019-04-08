@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
-<% if (results) { %>
+
 	<% results.forEach(function(r) { %>
+		<% if (r.email != "") { %>
 	        <%= r.email %>|<%= r.nivel %>
-	    <% }); %>
-<% }else { %> <%= 401 %> <% } %>
+		<% }else { %> <%= 401 %> <% } %>
+	<% }); %>
 </body>
 </html>
