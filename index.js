@@ -18,26 +18,11 @@ express()
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
   .get('/cool', (req, res) => res.send(cool()))
-  .post('/db', async (req, res) => {
-    try {
-   	  const email = req.param("email");
-   	  let pass = req.param("pass");
-   	  const query = `SELECT * FROM login where '${email}' = email and '${pass}' = pass`;
-      const client = await pool.connect()
-      const result = await client.query(query);
-      const results = { 'results': (result) ? result.rows : null};
-      res.render('pages/db', results );
-      client.release();
-    } catch (err) {
-      console.error(err);
-      res.send("Error " + err);
-    }
-  }) 
   .get('/db', async (req, res) => {
     try {
    	  const email = req.param("email");
    	  let pass = req.param("pass");
-   	  const query = `SELECT * FROM login where '${email}' = email and '${pass}' = pass`;
+   	  const query = `SELECT login.email, personal.nivel FROM login where '${email}' = login.email and '${pass}' = login.pass and login.id = personal.log_id `;
       const client = await pool.connect()
       const result = await client.query(query);
       const results = { 'results': (result) ? result.rows : null};

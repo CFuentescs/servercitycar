@@ -1,0 +1,6 @@
+ id | log_id |     rut      |        nombre         | apellido_paterno | apellido_materno |     nivel     | fecha_ingreso 
+----+--------+--------------+-----------------------+------------------+------------------+---------------+---------------
+  1 |      0 | 18.676.359-9 | carlos patricio       | fuentes          | cortes           | administrador | 2019-04-08
+  2 |      1 | 18.676.359-9 | juanita la del barrio | barr             | casi             | tutor         | 2019-04-08
+(2 rows)
+
