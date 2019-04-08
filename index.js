@@ -23,6 +23,7 @@ express()
    	  const email = req.param("email");
    	  let pass = req.param("pass");
    	  const query = `SELECT login.email, personal.nivel FROM login where '${email}' = login.email and '${pass}' = login.pass and login.id = personal.log_id `;
+   	  console.log(query);
       const client = await pool.connect()
       const result = await client.query(query);
       const results = { 'results': (result) ? result.rows : null};
