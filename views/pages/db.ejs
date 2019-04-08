@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
-<% results.forEach(function(r) { %>
-        <%= r.email  %>|<%= r.nivel %>
-    <% }); %>
+<% if (!results) { %>
+	<% results.forEach(function(r) { %>
+	        <%= r.email %>|<%= r.nivel %>
+	    <% }); %>
+<% }else { %> <%= 401 %> <% } %>
 </body>
 </html>
