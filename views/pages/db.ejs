@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<% if (!results) { %>
+<% if (results) { %>
 	<% results.forEach(function(r) { %>
 	        <%= r.email %>|<%= r.nivel %>
 	    <% }); %>
