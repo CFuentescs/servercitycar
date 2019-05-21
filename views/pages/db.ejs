@@ -3,7 +3,7 @@
 
 	<% results.forEach(function(r) { %>
 		<% if (r.email != "") { %>
-	        <%= r.email %>|<%= r.nivel %>
+	        <%= r.email %>|<%= r.nivel %>|<%= r.id %>||
 		<% }else { %> <%= 401 %> <% } %>
 	<% }); %>
 </body>
